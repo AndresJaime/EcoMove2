@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imagen5">
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="19dp"
+        android:text="ECOMOVE"
+        android:textColor="#FFFFFF"
+        android:textSize="70sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/subtitulo"
+        android:layout_width="346dp"
+        android:layout_height="76dp"
+        android:layout_below="@id/titulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Arrienda, pedalea y conoce"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+
+    <Button
+        android:id="@+id/boton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/black_border_button"
+        android:padding="16dp"
+        android:text="INICIAR"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

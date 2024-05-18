@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "198829986739",
+    "project_id": "ecomoveapp-d9660",
+    "storage_bucket": "ecomoveapp-d9660.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198829986739:android:15e5fceca4659de43771c6",
+        "android_client_info": {
+          "package_name": "com.example.ecomove"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByHMQti8r8wYOVld2eDemM2Y8Mvuu6JRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
