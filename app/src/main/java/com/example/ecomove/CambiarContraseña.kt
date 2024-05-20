@@ -9,30 +9,30 @@ import com.google.firebase.auth.FirebaseAuth
 
 class CambiarContraseña : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var autenticacion: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cambiar_contrasena)
 
-        auth = FirebaseAuth.getInstance()
+        autenticacion = FirebaseAuth.getInstance()
 
-        val emailEditText: EditText = findViewById(R.id.emailEditText)
-        val changePasswordButton: Button = findViewById(R.id.changePasswordButton)
+        val correoEditText: EditText = findViewById(R.id.emailEditText)
+        val botonCambiarContrasena: Button = findViewById(R.id.changePasswordButton)
 
-        changePasswordButton.setOnClickListener {
-            val email = emailEditText.text.toString()
+        botonCambiarContrasena.setOnClickListener {
+            val correo = correoEditText.text.toString()
 
-            if (email.isNotEmpty()) {
-                sendPasswordResetEmail(email)
+            if (correo.isNotEmpty()) {
+                enviarCorreoRestablecimiento(correo)
             } else {
                 Toast.makeText(this, "Por favor, ingrese su correo electrónico.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun sendPasswordResetEmail(email: String) {
-        auth.sendPasswordResetEmail(email)
+    private fun enviarCorreoRestablecimiento(correo: String) {
+        autenticacion.sendPasswordResetEmail(correo)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Correo enviado. Por favor revise su correo para restablecer la contraseña.", Toast.LENGTH_SHORT).show()

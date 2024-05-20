@@ -37,8 +37,6 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#B0B0B0" />
 
-
-
     <Button
         android:id="@+id/changePasswordButton"
         android:layout_width="match_parent"

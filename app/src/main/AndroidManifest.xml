@@ -41,6 +41,9 @@
 
         <activity android:name=".CambiarContraseña" android:exported="true"/>
         <activity android:name=".Login" android:exported="true"/>
+        <activity android:name=".Perfil" android:exported="true"/>
+        <activity android:name=".Menu" android:exported="true"/>
+        <activity android:name=".Localizacion" android:exported="true"/>
         <activity android:name=".Registro" android:exported="true"/>
         <activity android:name=".UbicacionTiempoReal" android:exported="true"/>
     </application>

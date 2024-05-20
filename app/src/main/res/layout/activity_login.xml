@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/imagen5">
+    android:background="@drawable/im">
 
     <TextView
         android:id="@+id/titleTextView"
@@ -34,7 +34,8 @@
         android:layout_marginTop="24dp"
         android:hint="Correo electrónico"
         android:textColor="#FFFFFF"
-        android:textColorHint="#E6B0B0B0" />
+        android:textColorHint="#E6B0B0B0"
+        android:background="@android:color/transparent" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -45,60 +46,43 @@
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
-        android:textColorHint="#B0B0B0" />
+        android:textColorHint="#E6B0B0B0"
+        android:background="@android:color/transparent" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
         android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/black_border_button"
         android:text="Iniciar sesión"
         android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/changePasswordButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginButton"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/black_border_button"
-        android:text="Cambiar Contraseña"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/changePasswordButton"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/black_border_button"
+        android:layout_below="@id/loginButton"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_background_button"
         android:text="Registrarse"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
 
-    <Button
-        android:id="@+id/guestButton"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/forgotPasswordTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/signUpButton"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/black_border_button"
-        android:text="Continuar como invitado"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/real"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/guestButton"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/black_border_button"
-        android:text="Testeo Pruebas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="¿Olvidaste tu contraseña?"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 

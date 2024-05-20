@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="hint_white_blurry">#80FFFFFF</color>
     <color name="my_light_primary">#6200EE</color>
     <color name="my_dark_primary">#121212</color>
+    <color name="button_cancel">#B0BEC5</color> <!-- Color gris para cancelar -->
+    <color name="button_logout">#D32F2F</color> <!-- Color rojo para cerrar sesión -->
 </resources>

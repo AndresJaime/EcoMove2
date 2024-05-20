@@ -52,10 +52,9 @@
         android:src="@drawable/menu" />
 
     <LinearLayout
-        android:id="@+id/menu_overlay"
+        android:id="@+id/menu_superpuesto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:visibility="gone"
         android:background="#AA000000">
@@ -69,38 +68,26 @@
             android:layout_margin="8dp"/>
 
         <Button
+            android:id="@+id/boton_gestionar_viajes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="GESTIONAR VIAJES"
             android:layout_margin="8dp"/>
 
         <Button
+            android:id="@+id/boton_perfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PERFIL"
             android:layout_margin="8dp"/>
 
         <Button
+            android:id="@+id/boton_visita_la_tienda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="VISITA LA TIENDA"
             android:layout_margin="8dp"/>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/regresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/black_border_button"
-        android:padding="16dp"
-        android:text="Regresar"
-        android:textColor="#FFFFFF"
-        android:textSize="13sp"
-        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button_ver_todas_rutas"
@@ -117,14 +104,15 @@
         android:textSize="13sp"
         android:textStyle="bold" />
 
+
     <Button
         android:id="@+id/button_ruta_mas_cercana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="202dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="139dp"
         android:background="@drawable/black_border_button"
         android:padding="16dp"
         android:text="Ruta Más Cercana"
@@ -138,12 +126,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="265dp"
-        android:layout_marginBottom="205dp"
+        android:layout_marginEnd="264dp"
+        android:layout_marginBottom="154dp"
         android:background="@drawable/black_border_button"
         android:padding="16dp"
         android:text="Ir a Mi Ubicación"
         android:textColor="#FFFFFF"
         android:textSize="13sp"
         android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/button_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="265dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="Cerrar Sesión"
+        android:src="@drawable/flecha" />
+
 </RelativeLayout>

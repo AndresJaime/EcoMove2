@@ -38,6 +38,11 @@ android {
 }
 
 dependencies {
+
+    implementation ("com.google.firebase:firebase-auth:21.0.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+    implementation ("com.google.firebase:firebase-database:20.0.3")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("androidx.core:core-ktx:1.9.0")
