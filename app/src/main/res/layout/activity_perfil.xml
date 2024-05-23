@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/imagen5">
+
+    <TextView
+        android:id="@+id/tituloTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Perfil"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nombreLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tituloTextView"
+        android:layout_marginTop="24dp"
+        android:text="Nombre de usuario:"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/nombreEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreLabelTextView"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B0B0B0"
+        android:hint="Ingrese su nombre de usuario"
+        android:enabled="false" />
+
+    <TextView
+        android:id="@+id/correoLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreEditText"
+        android:layout_marginTop="16dp"
+        android:text="Correo electrónico:"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/correoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/correoLabelTextView"
+        android:layout_marginTop="8dp"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B0B0B0"
+        android:hint="Ingrese su correo electrónico"
+        android:enabled="false" />
+
+    <TextView
+        android:id="@+id/telefonoLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/correoEditText"
+        android:layout_marginTop="16dp"
+        android:text="Teléfono:"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/telefonoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telefonoLabelTextView"
+        android:layout_marginTop="8dp"
+        android:inputType="phone"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#B0B0B0"
+        android:hint="Ingrese su número de teléfono"
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/botonGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telefonoEditText"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/black_border_button"
+        android:text="Guardar"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/botonCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botonGuardar"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/black_border_button"
+        android:text="Cerrar Sesión"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/botonVolver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botonCerrarSesion"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/black_border_button"
+        android:text="Volver"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+</RelativeLayout>

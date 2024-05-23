@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReservarBicicletaActivity">
+
+    <TextView
+        android:id="@+id/bicicletaTituloTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Bicicleta"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"/>
+
+    <ImageView
+        android:id="@+id/bicicletaImageView"
+        android:layout_width="match_parent"
+        android:layout_height="392dp"
+        android:layout_below="@id/bicicletaTituloTextView"
+        android:layout_marginTop="49dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_bike_placeholder" />
+
+    <TextView
+        android:id="@+id/bicicletaExistenciasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bicicletaImageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="148dp"
+        android:text="Existencias: "
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/comprarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bicicletaExistenciasTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="155dp"
+        android:text="Comprar" />
+    <TextView
+        android:id="@+id/activity_detalle_bicicleta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comprarButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Detalle de la bicicleta"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+</RelativeLayout>

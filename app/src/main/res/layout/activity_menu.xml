@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/imagen5">
+
+    <!-- Botón para abrir el menú -->
+    <ImageView
+        android:id="@+id/boton_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <!-- Vista del menú superpuesto -->
+    <RelativeLayout
+        android:id="@+id/menu_superpuesto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/boton_menu"
+        android:background="#80000000"
+        android:visibility="gone">
+
+        <!-- Botón para cerrar el menú -->
+        <ImageView
+            android:id="@+id/boton_cerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <!-- Botones dentro del menú -->
+        <Button
+            android:id="@+id/boton_gestionar_viajes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/boton_cerrar"
+            android:layout_marginTop="16dp"
+            android:text="Gestionar Viajes" />
+
+        <Button
+            android:id="@+id/boton_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/boton_gestionar_viajes"
+            android:layout_marginTop="16dp"
+            android:text="Perfil" />
+
+        <Button
+            android:id="@+id/boton_visita_la_tienda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/boton_perfil"
+            android:layout_marginTop="16dp"
+            android:text="Visita la Tienda" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

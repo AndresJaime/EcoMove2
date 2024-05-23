@@ -1,0 +1,275 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReservarBicicletaActivity">
+
+    <!-- Imagen de fondo -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bike_background"
+        android:contentDescription="@string/card_background"
+        android:alpha="0.5" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Imagen de fondo dentro del CardView -->
+                <ImageView
+                    android:id="@+id/cardBackgroundImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.5"
+                    android:contentDescription="@string/card_background"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/card_background" />
+
+                <TextView
+                    android:id="@+id/bicicletaTituloTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Bicicleta"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp" />
+
+                <!-- Imagen de la bicicleta -->
+                <ImageView
+                    android:id="@+id/bicicletaImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="538dp"
+                    android:layout_below="@id/bicicletaTituloTextView"
+                    android:layout_marginTop="-58dp"
+                    android:contentDescription="@string/bike_image"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/card_background" />
+
+                <TextView
+                    android:id="@+id/bicicletaExistenciasTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bicicletaImageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="Existencias: "
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bicicletaExistenciasTextView"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/ahoraYaButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_background_button"
+                        android:gravity="center"
+                        android:text="Ahora ya"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/agendarParaMasTardeButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_background_button"
+                        android:gravity="center"
+                        android:text="Agendar para más tarde"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Botones de horas disponibles -->
+                <GridLayout
+                    android:id="@+id/horasDisponiblesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearLayoutButtons"
+                    android:layout_marginTop="10dp"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="4"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/hora12Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="12:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora1Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="01:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora2Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="02:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora3Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="03:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora4Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="04:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora5Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="05:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora6Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="06:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora7Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="07:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora8Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="08:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora9Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="09:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora10Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="10:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/hora11Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/white_background_button"
+                        android:text="11:00 PM"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </GridLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBottomButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/comprarButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Comprar"
+            android:visibility="gone"
+            android:background="@drawable/white_background_button"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/alquilarButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alquilar"
+            android:visibility="gone"
+            android:background="@drawable/white_background_button"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</RelativeLayout>
