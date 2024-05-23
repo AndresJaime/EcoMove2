@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">Eco Move</string>
+    <string name="app_name">EcoMove</string>
+    <string name="bicicleta">Bicicleta</string>
+    <string name="bike_image">Imagen de la bicicleta</string>
+    <string name="existencias">Existencias: </string>
+    <string name="ahora_ya">Ahora Ya</string>
+    <string name="agendar_para_mas_tarde">Agendar para más tarde</string>
+    <string name="selecciona_una_hora">Selecciona una hora</string>
+    <string name="hora_12_pm">12 PM</string>
+    <string name="hora_1_pm">1 PM</string>
+    <string name="hora_2_pm">2 PM</string>
+    <string name="card_background">Fondo del card</string>
+    <string name="bike_background">Fondo de la aplicación</string>
+    <string name="hora_3_pm">3 PM</string>
+    <string name="hora_4_pm">4 PM</string>
+    <string name="hora_5_pm">5 PM</string>
+    <string name="hora_6_pm">6 PM</string>
+    <string name="hora_7_pm">7 PM</string>
+    <string name="hora_8_pm">8 PM</string>
+    <string name="comprar">Comprar</string>
+    <string name="_12_00_pm">\n</string>
+    <string name="_1_00_pm" />
+    <string name="_2_00_pm" />
+    <string name="_3_00_pm" />
+    <string name="_7_00_pm" />
+    <string name="_5_00_pm" />
+    <string name="_8_00_pm" />
+    <string name="_6_00_pm" />
+    <string name="_4_00_pm" />
 </resources>

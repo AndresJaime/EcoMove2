@@ -46,5 +46,6 @@
         <activity android:name=".Localizacion" android:exported="true"/>
         <activity android:name=".Registro" android:exported="true"/>
         <activity android:name=".UbicacionTiempoReal" android:exported="true"/>
+        <activity android:name=".ReservarBicicletaActivity" android:exported="true"/>
     </application>
 </manifest>

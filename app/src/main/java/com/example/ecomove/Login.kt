@@ -21,9 +21,9 @@ class Login : AppCompatActivity() {
         // Obtiene la instancia de autenticación de Firebase
         autenticacion = FirebaseAuth.getInstance()
 
-        // Verificar si el usuario ya está logueado
+        // Verifica si el usuario ya está logueado
         if (autenticacion.currentUser != null) {
-            // Redirigir a UbicacionTiempoReal si el usuario ya está logueado
+            // Redirige a UbicacionTiempoReal si el usuario ya está logueado
             startActivity(Intent(this, UbicacionTiempoReal::class.java))
             finish()
             return
@@ -33,10 +33,8 @@ class Login : AppCompatActivity() {
         val correoEditText: EditText = findViewById(R.id.emailEditText)
         val contrasenaEditText: EditText = findViewById(R.id.passwordEditText)
         val botonIniciarSesion: Button = findViewById(R.id.loginButton)
-        val botonRegistrarse: Button = findViewById(R.id.signUpButton)
-        //val botonMapaTiempoReal: Button = findViewById(R.id.real)
-       // val botonCambiarContrasena: Button = findViewById(R.id.changePasswordButton)
         val textoOlvidasteContrasena: TextView = findViewById(R.id.forgotPasswordTextView)
+        val textoRegistrarse: TextView = findViewById(R.id.signUpLinkTextView)
 
         // Configura el listener para el botón de iniciar sesión
         botonIniciarSesion.setOnClickListener {
@@ -61,27 +59,17 @@ class Login : AppCompatActivity() {
             iniciarSesion(correo, contrasena)
         }
 
-        // Configura el listener para el botón de registrarse
-        botonRegistrarse.setOnClickListener {
-            val intent = Intent(this, Registro::class.java)
+        // Configura el listener para el texto de olvidaste tu contraseña
+        textoOlvidasteContrasena.setOnClickListener {
+            // Redirige a la actividad CambiarContraseña
+            val intent = Intent(this, CambiarContraseña::class.java)
             startActivity(intent)
         }
 
-
-
-        // Configura el listener para el texto de olvidaste tu contraseña
-        textoOlvidasteContrasena.setOnClickListener {
-            val correo = correoEditText.text.toString().trim()
-
-            // Verifica si el campo de correo está vacío
-            if (correo.isEmpty()) {
-                correoEditText.error = "Correo electrónico es requerido para reestablecer la contraseña"
-                correoEditText.requestFocus()
-                return@setOnClickListener
-            }
-
-            // Llama al método para reestablecer la contraseña
-            reestablecerContrasena(correo)
+        // Configura el listener para el texto de registrarse
+        textoRegistrarse.setOnClickListener {
+            val intent = Intent(this, Registro::class.java)
+            startActivity(intent)
         }
     }
 
@@ -90,13 +78,15 @@ class Login : AppCompatActivity() {
         autenticacion.signInWithEmailAndPassword(correo, contrasena)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Inicio de sesión exitoso, redirige a la actividad principal
                     val usuario = autenticacion.currentUser
                     val uid = usuario?.uid
-                    val intent = Intent(this, UbicacionTiempoReal::class.java) // Aquí es donde se especifica la actividad a la que se redirige después de loguearse
+                    val intent = Intent(this, UbicacionTiempoReal::class.java) // Redirige a UbicacionTiempoReal después de iniciar sesión
                     intent.putExtra("USER_UID", uid)
                     startActivity(intent)
                     finish()
                 } else {
+                    // Muestra un error si el inicio de sesión falla
                     mostrarErrorInicioSesion()
                 }
             }
@@ -107,17 +97,5 @@ class Login : AppCompatActivity() {
         val contrasenaEditText: EditText = findViewById(R.id.passwordEditText)
         contrasenaEditText.error = "La contraseña es incorrecta o la cuenta no existe"
         contrasenaEditText.requestFocus()
-    }
-
-    // Método para reestablecer la contraseña con FirebaseAuth
-    private fun reestablecerContrasena(correo: String) {
-        autenticacion.sendPasswordResetEmail(correo)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "Correo para reestablecer la contraseña enviado", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Error al enviar el correo de reestablecimiento", Toast.LENGTH_SHORT).show()
-                }
-            }
     }
 }

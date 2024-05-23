@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -32,12 +33,6 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
     private lateinit var baseDatos: DatabaseReference
     private lateinit var autenticacion: FirebaseAuth
 
-    private val sucursales = listOf(
-        LatLng(-35.42084945954186, -71.67803695962358), // autonoma talca
-        LatLng(-35.426136604515506, -71.66646699464769), // plaza de armas
-        LatLng(-35.420381696310294, -71.68721768013275) // ubicacion de prueba
-    )
-
     private lateinit var sucursalMasCercana: LatLng
     private var distanciaMinima = Double.MAX_VALUE
     private lateinit var ubicacionUsuario: LatLng
@@ -48,27 +43,12 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
         setContentView(R.layout.activity_ubicacion_tiempo_real)
 
         autenticacion = FirebaseAuth.getInstance()
-        baseDatos = FirebaseDatabase.getInstance().getReference("locations")
+        baseDatos = FirebaseDatabase.getInstance().getReference("sucursales")
 
         val fragmentoMapa = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         fragmentoMapa.getMapAsync(this)
 
         setupMenu(findViewById(R.id.menu_superpuesto), findViewById(R.id.menu_button), findViewById(R.id.close_button))
-
-        findViewById<Button>(R.id.button_ver_todas_rutas).setOnClickListener {
-            obtenerUbicacionActual { ubicacion ->
-                ubicacion?.let {
-                    ubicacionUsuario = LatLng(it.latitude, it.longitude)
-                    mapaGoogle.clear()
-                    mostrandoRutaMasCercana = false
-                    findViewById<Button>(R.id.button_ruta_mas_cercana).text = "Ruta Más Cercana"
-                    mostrarSucursales(ubicacionUsuario)
-                    for (sucursal in sucursales) {
-                        mostrarRuta(ubicacionUsuario, sucursal, sucursal == sucursalMasCercana)
-                    }
-                } ?: Toast.makeText(this, "No se pudo obtener la ubicación en tiempo real.", Toast.LENGTH_SHORT).show()
-            }
-        }
 
         findViewById<Button>(R.id.button_ruta_mas_cercana).setOnClickListener {
             if (mostrandoRutaMasCercana) {
@@ -87,15 +67,6 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
                         findViewById<Button>(R.id.button_ruta_mas_cercana).text = "Dejar de Ver"
                     } ?: Toast.makeText(this, "No se pudo obtener la ubicación en tiempo real.", Toast.LENGTH_SHORT).show()
                 }
-            }
-        }
-
-        findViewById<Button>(R.id.button_ir_a_ubicacion).setOnClickListener {
-            obtenerUbicacionActual { ubicacion ->
-                ubicacion?.let {
-                    ubicacionUsuario = LatLng(it.latitude, it.longitude)
-                    mapaGoogle.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUsuario, 15f))
-                } ?: Toast.makeText(this, "No se pudo obtener la ubicación en tiempo real.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -121,7 +92,7 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
     }
 
     private fun obtenerUbicacionActual(callback: (Location?) -> Unit) {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             val clienteUbicacion = LocationServices.getFusedLocationProviderClient(this)
             clienteUbicacion.lastLocation.addOnSuccessListener { ubicacion ->
                 callback(ubicacion)
@@ -135,37 +106,26 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
         mapaGoogle = mapa
         mapaGoogle.uiSettings.isZoomControlsEnabled = true
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mapaGoogle.isMyLocationEnabled = true
             obtenerUbicacionActual { ubicacion ->
                 ubicacion?.let {
                     ubicacionUsuario = LatLng(it.latitude, it.longitude)
                     mapaGoogle.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUsuario, 15f))
+                    mostrarSucursales(ubicacionUsuario)
                 } ?: run {
                     ubicacionUsuario = LatLng(-35.42084945954186, -71.67803695962358)
                     mapaGoogle.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUsuario, 15f))
+                    mostrarSucursales(ubicacionUsuario)
                 }
-                mostrarSucursales(ubicacionUsuario)
             }
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
         }
 
-        mostrarSucursalesIniciales()
-
         baseDatos.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                mapaGoogle.clear()
                 mostrarSucursales(ubicacionUsuario)
-                for (snapshotUsuario in snapshot.children) {
-                    val lat = snapshotUsuario.child("latitude").getValue(Double::class.java)
-                    val lng = snapshotUsuario.child("longitude").getValue(Double::class.java)
-                    if (lat != null && lng != null) {
-                        ubicacionUsuario = LatLng(lat, lng)
-                        mapaGoogle.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacionUsuario, 15f))
-                        mostrarSucursales(ubicacionUsuario)
-                    }
-                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -175,41 +135,54 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
 
         mapaGoogle.setOnMarkerClickListener { marker ->
             val intent = Intent(this, Localizacion::class.java)
-            intent.putExtra("ubicacion", marker.position)
-            intent.putExtra("titulo", marker.title)
+            intent.putExtra("sucursalId", marker.tag as String)
+            intent.putExtra("sucursalTitulo", marker.title)
             startActivity(intent)
             true
         }
     }
 
-    private fun mostrarSucursalesIniciales() {
-        for (sucursal in sucursales) {
-            val opcionesMarcador = MarkerOptions().position(sucursal)
-            opcionesMarcador.title("Sucursal")
-            opcionesMarcador.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-            mapaGoogle.addMarker(opcionesMarcador)
-        }
-    }
-
     private fun mostrarSucursales(ubicacionUsuario: LatLng) {
         distanciaMinima = Double.MAX_VALUE
+        var sucursalMasCercanaKey: String? = null
+        val markers = mutableListOf<Marker>()
 
-        for (sucursal in sucursales) {
-            val distancia = calcularDistancia(ubicacionUsuario, sucursal)
-            val opcionesMarcador = MarkerOptions().position(sucursal)
-            opcionesMarcador.title("Sucursal (${distancia.toInt()}m)")
+        baseDatos.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mapaGoogle.clear()
+                for (snapshotSucursal in snapshot.children) {
+                    val sucursal = snapshotSucursal.getValue(Sucursal::class.java)
+                    if (sucursal != null) {
+                        val position = LatLng(sucursal.latitude, sucursal.longitude)
+                        val distancia = calcularDistancia(ubicacionUsuario, position)
+                        val opcionesMarcador = MarkerOptions().position(position).title(sucursal.name)
 
-            val esMasCercana = distancia < distanciaMinima
-            if (esMasCercana) {
-                distanciaMinima = distancia
-                sucursalMasCercana = sucursal
-                opcionesMarcador.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-            } else {
-                opcionesMarcador.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        if (distancia < distanciaMinima) {
+                            distanciaMinima = distancia
+                            sucursalMasCercana = position
+                            sucursalMasCercanaKey = snapshotSucursal.key
+                        }
+
+                        val marker = mapaGoogle.addMarker(opcionesMarcador)
+                        marker?.tag = snapshotSucursal.key
+                        markers.add(marker!!)
+                    }
+                }
+
+                // Set color of all markers after determining the closest one
+                for (marker in markers) {
+                    if (marker.tag == sucursalMasCercanaKey) {
+                        marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                    } else {
+                        marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                    }
+                }
             }
 
-            mapaGoogle.addMarker(opcionesMarcador)
-        }
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("UbicacionTiempoReal", "DatabaseError: ${error.message}")
+            }
+        })
     }
 
     private fun mostrarRuta(origen: LatLng, destino: LatLng, esMasCercana: Boolean) {
@@ -324,4 +297,11 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
         startActivity(Intent(this, Login::class.java))
         finish()
     }
+
+    data class Sucursal(
+        val existencias: Int = 0,
+        val latitude: Double = 0.0,
+        val longitude: Double = 0.0,
+        val name: String = ""
+    )
 }
