@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imagen5">
+    android:background="@drawable/card_background">
 
     <TextView
         android:id="@+id/titulo"
@@ -40,55 +40,16 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/profile2" />
 
-    <LinearLayout
-        android:id="@+id/menu_superpuesto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-        android:background="#AA000000">
-
-        <ImageView
-            android:id="@+id/close_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/cerrar"
-            android:layout_gravity="end"
-            android:layout_margin="8dp"/>
-
-        <Button
-            android:id="@+id/boton_gestionar_viajes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="GESTIONAR VIAJES"
-            android:layout_margin="8dp"/>
-
-        <Button
-            android:id="@+id/boton_perfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="PERFIL"
-            android:layout_margin="8dp"/>
-
-        <Button
-            android:id="@+id/boton_visita_la_tienda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="VISITA LA TIENDA"
-            android:layout_margin="8dp"/>
-    </LinearLayout>
-
     <Button
         android:id="@+id/button_ruta_mas_cercana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mapFragment"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="18dp"
         android:background="@drawable/black_border_button"
-        android:padding="16dp"
+        android:padding="8dp"
         android:text="Ruta Más Cercana"
         android:textColor="#FFFFFF"
         android:textSize="13sp"
@@ -102,7 +63,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:contentDescription="Cerrar Sesión"
+        android:contentDescription="volver"
         android:src="@drawable/flecha" />
 
 </RelativeLayout>

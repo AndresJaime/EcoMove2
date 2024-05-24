@@ -2,6 +2,7 @@ package com.example.ecomove
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -24,8 +25,14 @@ class Localizacion : AppCompatActivity() {
         val sucursalTitulo = intent.getStringExtra("sucursalTitulo") ?: "Sucursal"
         tituloTextView = findViewById(R.id.tituloTextView)
         deslizadorBicicletas = findViewById(R.id.deslizadorBicicletas)
+        val volverButton: ImageView = findViewById(R.id.volverButton)
 
         tituloTextView.text = sucursalTitulo
+
+        volverButton.setOnClickListener {
+            val intent = Intent(this, UbicacionTiempoReal::class.java)
+            startActivity(intent)
+        }
 
         baseDatos = FirebaseDatabase.getInstance().getReference("sucursales/$sucursalId")
 

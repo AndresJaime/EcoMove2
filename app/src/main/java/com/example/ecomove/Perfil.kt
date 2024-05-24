@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -20,8 +23,7 @@ class Perfil : AppCompatActivity() {
     private lateinit var correoEditText: EditText
     private lateinit var telefonoEditText: EditText
     private lateinit var botonGuardar: Button
-    private lateinit var botonCerrarSesion: Button
-    private lateinit var botonVolver: Button
+    private lateinit var cerrarSesionTextView: TextView
 
     private var enModoEdicion = false
 
@@ -37,13 +39,13 @@ class Perfil : AppCompatActivity() {
         correoEditText = findViewById(R.id.correoEditText)
         telefonoEditText = findViewById(R.id.telefonoEditText)
         botonGuardar = findViewById(R.id.botonGuardar)
-        botonCerrarSesion = findViewById(R.id.botonCerrarSesion)
-        botonVolver = findViewById(R.id.botonVolver)
+        cerrarSesionTextView = findViewById(R.id.cerrarSesionTextView)
 
         cargarDatosUsuario()
 
         // Configura el botón para iniciar en modo "Editar"
         botonGuardar.text = "Editar"
+        botonGuardar.setBackgroundColor(resources.getColor(R.color.azul)) // Color azul
 
         botonGuardar.setOnClickListener {
             if (enModoEdicion) {
@@ -53,12 +55,13 @@ class Perfil : AppCompatActivity() {
             }
         }
 
-        botonCerrarSesion.setOnClickListener {
-            cerrarSesion()
+        cerrarSesionTextView.setOnClickListener {
+            mostrarDialogoCerrarSesion()
         }
 
-        botonVolver.setOnClickListener {
-            finish() // Finaliza la actividad actual y vuelve a la actividad anterior
+        findViewById<ImageView>(R.id.button_logout2).setOnClickListener {
+            val intent = Intent(this, UbicacionTiempoReal::class.java)
+            startActivity(intent)
         }
     }
 
@@ -68,6 +71,7 @@ class Perfil : AppCompatActivity() {
         correoEditText.isEnabled = true
         telefonoEditText.isEnabled = true
         botonGuardar.text = "Guardar"
+        botonGuardar.setBackgroundColor(resources.getColor(R.color.verde)) // Color verde
         enModoEdicion = true
     }
 
@@ -77,6 +81,7 @@ class Perfil : AppCompatActivity() {
         correoEditText.isEnabled = false
         telefonoEditText.isEnabled = false
         botonGuardar.text = "Editar"
+        botonGuardar.setBackgroundColor(resources.getColor(R.color.azul)) // Color azul
         enModoEdicion = false
     }
 
@@ -133,6 +138,22 @@ class Perfil : AppCompatActivity() {
                     Toast.makeText(this, "Error al guardar datos.", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun mostrarDialogoCerrarSesion() {
+        val dialogView = layoutInflater.inflate(R.layout.dialogo_confirmacion_cerrar_sesion, null)
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+        builder.setView(dialogView)
+        val dialog = builder.create()
+        dialog.show()
+
+        dialogView.findViewById<Button>(R.id.botonCerrarSesion).setOnClickListener {
+            cerrarSesion()
+            dialog.dismiss()
+        }
+        dialogView.findViewById<Button>(R.id.botonCancelar).setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
     private fun cerrarSesion() {

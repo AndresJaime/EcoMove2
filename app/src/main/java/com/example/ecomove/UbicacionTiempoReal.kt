@@ -35,7 +35,7 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
 
     private lateinit var sucursalMasCercana: LatLng
     private var distanciaMinima = Double.MAX_VALUE
-    private lateinit var ubicacionUsuario: LatLng
+    private var ubicacionUsuario: LatLng = LatLng(0.0, 0.0) // Proveer un valor por defecto
     private var mostrandoRutaMasCercana = false
 
     override fun onCreate(estadoInstancia: Bundle?) {
@@ -47,8 +47,6 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
 
         val fragmentoMapa = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         fragmentoMapa.getMapAsync(this)
-
-        setupMenu(findViewById(R.id.menu_superpuesto), findViewById(R.id.menu_button), findViewById(R.id.close_button))
 
         findViewById<Button>(R.id.button_ruta_mas_cercana).setOnClickListener {
             if (mostrandoRutaMasCercana) {
@@ -68,6 +66,11 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
                     } ?: Toast.makeText(this, "No se pudo obtener la ubicación en tiempo real.", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        findViewById<ImageView>(R.id.menu_button).setOnClickListener {
+            val intent = Intent(this, Perfil::class.java)
+            startActivity(intent)
         }
 
         findViewById<ImageView>(R.id.button_logout).setOnClickListener {
@@ -169,7 +172,7 @@ class UbicacionTiempoReal : Menu(), OnMapReadyCallback {
                     }
                 }
 
-                // Set color of all markers after determining the closest one
+                // Cambiar color de todos los marcadores después de determinar el más cercano
                 for (marker in markers) {
                     if (marker.tag == sucursalMasCercanaKey) {
                         marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))

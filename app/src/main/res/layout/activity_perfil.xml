@@ -1,8 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/imagen5">
+    android:background="@drawable/bike_perfil">
+
+    <ImageView
+        android:id="@+id/button_logout2"
+        android:layout_width="55dp"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="11dp"
+        android:contentDescription="Volver"
+        app:srcCompat="@drawable/flecha" />
 
     <TextView
         android:id="@+id/tituloTextView"
@@ -21,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tituloTextView"
         android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
         android:text="Nombre de usuario:"
         android:textColor="#FFFFFF" />
 
@@ -34,7 +47,8 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#B0B0B0"
         android:hint="Ingrese su nombre de usuario"
-        android:enabled="false" />
+        android:enabled="false"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/correoLabelTextView"
@@ -42,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nombreEditText"
         android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         android:text="Correo electrónico:"
         android:textColor="#FFFFFF" />
 
@@ -55,7 +70,8 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#B0B0B0"
         android:hint="Ingrese su correo electrónico"
-        android:enabled="false" />
+        android:enabled="false"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/telefonoLabelTextView"
@@ -63,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/correoEditText"
         android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
         android:text="Teléfono:"
         android:textColor="#FFFFFF" />
 
@@ -76,7 +93,8 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#B0B0B0"
         android:hint="Ingrese su número de teléfono"
-        android:enabled="false" />
+        android:enabled="false"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/botonGuardar"
@@ -84,31 +102,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/telefonoEditText"
         android:layout_marginTop="24dp"
-        android:background="@drawable/black_border_button"
-        android:text="Guardar"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:backgroundTint="@color/azul"
+        android:text="Editar"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/botonCerrarSesion"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/cerrarSesionTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/botonGuardar"
         android:layout_marginTop="16dp"
-        android:background="@drawable/black_border_button"
-        android:text="Cerrar Sesión"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/botonVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/botonCerrarSesion"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/black_border_button"
-        android:text="Volver"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
-
+        android:text="Cerrar sesión"
+        android:textColor="@color/button_logout"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

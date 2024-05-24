@@ -22,8 +22,7 @@ class ReservarBicicletaActivity : AppCompatActivity() {
     private lateinit var ahoraYaButton: Button
     private lateinit var agendarParaMasTardeButton: Button
     private lateinit var horasDisponiblesLayout: View
-    private lateinit var comprarButton: Button
-    private lateinit var alquilarButton: Button
+    private lateinit var pagarButton: Button
     private var isAgendarMode: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +39,7 @@ class ReservarBicicletaActivity : AppCompatActivity() {
         ahoraYaButton = findViewById(R.id.ahoraYaButton)
         agendarParaMasTardeButton = findViewById(R.id.agendarParaMasTardeButton)
         horasDisponiblesLayout = findViewById(R.id.horasDisponiblesLayout)
-        comprarButton = findViewById(R.id.comprarButton)
-        alquilarButton = findViewById(R.id.alquilarButton)
+        pagarButton = findViewById(R.id.pagarButton)
 
         tituloTextView.text = bicicletaNombre
         existenciasTextView.text = "Existencias: $bicicletaExistencias"
@@ -53,8 +51,7 @@ class ReservarBicicletaActivity : AppCompatActivity() {
         baseDatos = FirebaseDatabase.getInstance().getReference("sucursales/$sucursalId/productos/$bicicletaNombre")
 
         ahoraYaButton.setOnClickListener {
-            comprarButton.visibility = View.VISIBLE
-            alquilarButton.visibility = View.VISIBLE
+            pagarButton.visibility = View.VISIBLE
             horasDisponiblesLayout.visibility = View.GONE
             resetAgendarButton()
         }
@@ -64,79 +61,45 @@ class ReservarBicicletaActivity : AppCompatActivity() {
                 resetAgendarButton()
             } else {
                 horasDisponiblesLayout.visibility = View.VISIBLE
-                comprarButton.visibility = View.GONE
-                alquilarButton.visibility = View.GONE
+                pagarButton.visibility = View.GONE
                 agendarParaMasTardeButton.text = "Cancelar"
                 isAgendarMode = true
             }
         }
 
         // Agregar listeners a los botones de horas disponibles
-        findViewById<Button>(R.id.hora12Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
+        val horasDisponibles = listOf(
+            R.id.hora12Button, R.id.hora1Button, R.id.hora2Button, R.id.hora3Button,
+            R.id.hora4Button, R.id.hora5Button, R.id.hora6Button, R.id.hora7Button,
+            R.id.hora8Button, R.id.hora9Button, R.id.hora10Button, R.id.hora11Button
+        )
+
+        for (hora in horasDisponibles) {
+            findViewById<Button>(hora).setOnClickListener {
+                mostrarOpcionesDePago()
+            }
         }
 
-        findViewById<Button>(R.id.hora1Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora2Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora3Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora4Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora5Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora6Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora7Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora8Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        findViewById<Button>(R.id.hora9Button).setOnClickListener {
-            mostrarOpcionesDeCompraAlquiler()
-        }
-
-        comprarButton.setOnClickListener {
-            modificarExistencias("comprar")
-        }
-
-        alquilarButton.setOnClickListener {
-            modificarExistencias("alquilar")
+        pagarButton.setOnClickListener {
+            modificarExistencias()
         }
     }
 
-    private fun mostrarOpcionesDeCompraAlquiler() {
-        comprarButton.visibility = View.VISIBLE
-        alquilarButton.visibility = View.VISIBLE
+    private fun mostrarOpcionesDePago() {
+        pagarButton.visibility = View.VISIBLE
     }
 
-    private fun modificarExistencias(accion: String) {
+    private fun modificarExistencias() {
         if (bicicletaExistencias > 0) {
             val nuevasExistencias = bicicletaExistencias - 1
             baseDatos.child("existencias").setValue(nuevasExistencias)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Has $accion $bicicletaNombre", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Has pagado por $bicicletaNombre", Toast.LENGTH_SHORT).show()
                     existenciasTextView.text = "Existencias: $nuevasExistencias"
                     bicicletaExistencias = nuevasExistencias
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Error al $accion $bicicletaNombre", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error al pagar por $bicicletaNombre", Toast.LENGTH_SHORT).show()
                 }
         } else {
             Toast.makeText(this, "No hay existencias de $bicicletaNombre", Toast.LENGTH_SHORT).show()
@@ -146,6 +109,7 @@ class ReservarBicicletaActivity : AppCompatActivity() {
     private fun resetAgendarButton() {
         horasDisponiblesLayout.visibility = View.GONE
         agendarParaMasTardeButton.text = "Agendar para más tarde"
+        pagarButton.visibility = View.GONE
         isAgendarMode = false
     }
 }

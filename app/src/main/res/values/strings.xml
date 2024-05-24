@@ -17,14 +17,16 @@
     <string name="hora_6_pm">6 PM</string>
     <string name="hora_7_pm">7 PM</string>
     <string name="hora_8_pm">8 PM</string>
+    <string name="hora_11_pm">12:00 PM</string>
     <string name="comprar">Comprar</string>
     <string name="_12_00_pm">\n</string>
     <string name="_1_00_pm" />
     <string name="_2_00_pm" />
     <string name="_3_00_pm" />
     <string name="_7_00_pm" />
-    <string name="_5_00_pm" />
     <string name="_8_00_pm" />
+    <string name="_5_00_pm" />
+
     <string name="_6_00_pm" />
     <string name="_4_00_pm" />
 </resources>

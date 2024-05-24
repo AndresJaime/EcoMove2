@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bike_background"
+        android:src="@drawable/card_background"
         android:contentDescription="@string/card_background"
         android:alpha="0.5" />
 
@@ -53,12 +53,13 @@
                     android:textSize="24sp" />
 
                 <!-- Imagen de la bicicleta -->
+
                 <ImageView
                     android:id="@+id/bicicletaImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="538dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/bicicletaTituloTextView"
-                    android:layout_marginTop="-58dp"
+                    android:layout_marginTop="-133dp"
                     android:contentDescription="@string/bike_image"
                     android:scaleType="centerInside"
                     android:src="@drawable/card_background" />
@@ -88,10 +89,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:gravity="center"
                         android:text="Ahora ya"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -99,10 +100,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:gravity="center"
                         android:text="Agendar para más tarde"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -122,9 +123,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="12:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -132,9 +133,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="01:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -142,9 +143,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="02:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -152,9 +153,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="03:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -162,9 +163,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="04:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -172,9 +173,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="05:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -182,9 +183,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="06:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -192,9 +193,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="07:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -202,9 +203,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="08:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -212,9 +213,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="09:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -222,9 +223,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="10:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
 
                     <Button
@@ -232,9 +233,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
-                        android:background="@drawable/white_background_button"
+                        android:background="@drawable/black_border_button"
                         android:text="11:00 PM"
-                        android:textColor="@color/black"
+                        android:textColor="@android:color/white"
                         android:textStyle="bold" />
                 </GridLayout>
             </RelativeLayout>
@@ -251,25 +252,14 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/comprarButton"
+            android:id="@+id/pagarButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Comprar"
+            android:text="Pagar"
             android:visibility="gone"
-            android:background="@drawable/white_background_button"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-
-        <Button
-            android:id="@+id/alquilarButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Alquilar"
-            android:visibility="gone"
-            android:background="@drawable/white_background_button"
-            android:textColor="@color/black"
+            android:background="@drawable/black_border_button"
+            android:textColor="@android:color/white"
             android:textStyle="bold"/>
     </LinearLayout>
 </RelativeLayout>
