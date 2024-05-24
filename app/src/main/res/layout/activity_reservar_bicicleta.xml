@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReservarBicicletaActivity">
+    tools:context=".ReservarBicicletaActivity"
+    android:background="@drawable/card_background">
 
     <!-- Imagen de fondo -->
     <ImageView
@@ -19,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:padding="16dp">
+        android:padding="16dp"
+        >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -38,7 +40,7 @@
                     android:id="@+id/cardBackgroundImageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:alpha="0.5"
+                    android:alpha="1"
                     android:contentDescription="@string/card_background"
                     android:scaleType="centerCrop"
                     android:src="@drawable/card_background" />
@@ -72,8 +74,12 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
                     android:text="Existencias: "
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="18sp" />
+
+
+
+
 
                 <LinearLayout
                     android:id="@+id/linearLayoutButtons"
@@ -89,22 +95,24 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/black_border_button"
+                        android:background="#A6ADAD"
                         android:gravity="center"
                         android:text="Ahora ya"
-                        android:textColor="@android:color/white"
+                        android:textColor="#000000"
                         android:textStyle="bold" />
+
 
                     <Button
                         android:id="@+id/agendarParaMasTardeButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/black_border_button"
+                        android:background="#FFFFFFFF"
                         android:gravity="center"
                         android:text="Agendar para más tarde"
-                        android:textColor="@android:color/white"
+                        android:textColor="#000000"
                         android:textStyle="bold" />
+
                 </LinearLayout>
 
                 <!-- Botones de horas disponibles -->
@@ -116,7 +124,8 @@
                     android:layout_marginTop="10dp"
                     android:alignmentMode="alignMargins"
                     android:columnCount="4"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    >
 
                     <Button
                         android:id="@+id/hora12Button"
@@ -257,9 +266,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Pagar"
+            android:textColor="@color/black"
             android:visibility="gone"
-            android:background="@drawable/black_border_button"
-            android:textColor="@android:color/white"
+            android:backgroundTint="@color/azul"
             android:textStyle="bold"/>
+
+
     </LinearLayout>
 </RelativeLayout>
