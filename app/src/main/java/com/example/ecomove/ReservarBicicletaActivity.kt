@@ -51,9 +51,8 @@ class ReservarBicicletaActivity : AppCompatActivity() {
         baseDatos = FirebaseDatabase.getInstance().getReference("sucursales/$sucursalId/productos/$bicicletaNombre")
 
         ahoraYaButton.setOnClickListener {
-            pagarButton.visibility = View.VISIBLE
-            horasDisponiblesLayout.visibility = View.GONE
             resetAgendarButton()
+            pagarButton.visibility = View.VISIBLE
         }
 
         agendarParaMasTardeButton.setOnClickListener {
@@ -109,7 +108,7 @@ class ReservarBicicletaActivity : AppCompatActivity() {
     private fun resetAgendarButton() {
         horasDisponiblesLayout.visibility = View.GONE
         agendarParaMasTardeButton.text = "Agendar para más tarde"
-        pagarButton.visibility = View.GONE
         isAgendarMode = false
+        pagarButton.visibility = View.GONE
     }
 }
